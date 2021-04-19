@@ -9,7 +9,7 @@ import styled from 'styled-components';
 // utils
 import { COLORS, IMAGES } from '../../../utils/globalUtils';
 import { links } from './Header.utils';
-// import { auth, provider } from '../firebase';
+import { auth, provider } from '../../../firebase';
 // import {
 //   selectUserName,
 //   selectUserPhoto,
@@ -19,7 +19,7 @@ import { links } from './Header.utils';
 
 export default function Header() {
   // const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
   // const userName = useSelector(selectUserName);
   // const userPhoto = useSelector(selectUserPhoto);
 
@@ -64,7 +64,17 @@ export default function Header() {
   // };
 
   let userName = false;
-  let handleAuth = '';
+
+  let userPhoto = '';
+
+  const handleAuth = async () => {
+    try {
+      const result = auth.signInWithPopup(provider);
+      console.log({ result });
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   return (
     <Nav>
@@ -84,6 +94,12 @@ export default function Header() {
               </a>
             ))}
           </NavMenu>
+          <SignOutBtn>
+            <UserImg src={userPhoto} alt={userName} />
+            <DropDown>
+              <span onClick={handleAuth}>Sign out</span>
+            </DropDown>
+          </SignOutBtn>
         </>
       )}
     </Nav>
