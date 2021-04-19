@@ -47,9 +47,9 @@ export default function Header() {
     if (!userName) {
       try {
         const result = auth.signInWithPopup(provider);
-        setUser(result.user);
+        if (result.user) setUser(result.user);
       } catch (error) {
-        alert(error.message);
+        throw error;
       }
     } else if (userName) {
       try {
@@ -57,7 +57,7 @@ export default function Header() {
         dispatch(setSignOutState());
         history.push('/');
       } catch (error) {
-        alert(error.message);
+        throw error;
       }
     }
   };
