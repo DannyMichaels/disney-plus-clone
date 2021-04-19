@@ -194,11 +194,11 @@ const LoginBtn = styled.a`
   padding: 8px 16px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  border: 1px solid #f9f9f9;
+  border: 1px solid ${COLORS.DISNEY_WHITE};
   border-radius: 4px;
   transition: all 0.2s ease 0s;
   &:hover {
-    background-color: #f9f9f9;
+    background-color: ${COLORS.DISNEY_WHITE};
     color: #000;
     border-color: transparent;
   }
