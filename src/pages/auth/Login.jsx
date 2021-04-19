@@ -1,25 +1,30 @@
 import styled from 'styled-components';
 import { COLORS, IMAGES } from '../../utils/globalUtils';
 
-export default function Login() {
-  return (
-    <Container>
-      <Content>
-        <CTA>
-          <CTALogoOne src={IMAGES.WELCOME_LOGOS_1} />
-          <SignUpBtn>Get All There</SignUpBtn>
-          <Description>
-            Get Premier Access to Raya and the Last Dragon for an additional fee
-            with a Disney+ subscription. As of 03/26/21, the price of Disney+
-            and The Disney Bundle will increase by $1.
-          </Description>
-          <CTALogoTwo src={IMAGES.WELCOME_LOGOS_2} alt="logos" />
-        </CTA>
-        <BgImage />
-      </Content>
-    </Container>
-  );
-}
+const Login = () => (
+  <Container>
+    <Content>
+      <CTA>
+        <CTALogoOne
+          src={IMAGES.CTA_LOGO_ONE}
+          alt="Hulu, Disney+ and ESPN Logos"
+        />
+        <SignUpBtn aria-label="Sign-up button">Get All There</SignUpBtn>
+        <Description>
+          Get Premier Access to Raya and the Last Dragon for an additional fee
+          with a Disney+ subscription. As of 03/26/21, the price of Disney+ and
+          The Disney Bundle will increase by $1.
+        </Description>
+        <CTALogoTwo
+          src={IMAGES.CTA_LOGO_TWO}
+          alt="Disney, Pixar, Marvel, Star Wars, and National Geographic logos"
+        />
+      </CTA>
+      <BgImage />
+    </Content>
+  </Container>
+);
+
 const Container = styled.section`
   overflow: hidden;
   display: flex;
@@ -102,3 +107,5 @@ const CTALogoTwo = styled.img`
   vertical-align: bottom;
   width: 100%;
 `;
+
+export default Login;

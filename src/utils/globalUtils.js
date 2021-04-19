@@ -7,8 +7,6 @@ export const COLORS = {
 
 export const IMAGES = {
   WELCOME_BG: '/images/login-background.jpg',
-  WELCOME_LOGOS_1:
-    'https://cannonball-cdn.bamgrid.com/assets/originals/bundle-logo-01.svg',
-  WELCOME_LOGOS_2:
-    'https://cannonball-cdn.bamgrid.com/assets/originals/disney-franchise-logos.png',
+  CTA_LOGO_ONE: '/images/cta-logo-one.svg',
+  CTA_LOGO_TWO: 'images/cta-logo-two.png',
 };
