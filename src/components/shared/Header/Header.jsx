@@ -10,69 +10,55 @@ import styled from 'styled-components';
 import { COLORS, IMAGES } from '../../../utils/globalUtils';
 import { links } from './Header.utils';
 import { auth, provider } from '../../../firebase';
-// import {
-//   selectUserName,
-//   selectUserPhoto,
-//   setUserLoginDetails,
-//   setSignOutState,
-// } from '../features/user/userSlice';
+import {
+  selectUserName,
+  selectUserPhoto,
+  setUserLoginDetails,
+  setSignOutState,
+} from '../../../features/user/userSlice';
 
 export default function Header() {
-  // const dispatch = useDispatch();
-  // const history = useHistory();
-  // const userName = useSelector(selectUserName);
-  // const userPhoto = useSelector(selectUserPhoto);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const userName = useSelector(selectUserName);
+  const userPhoto = useSelector(selectUserPhoto);
 
-  // useEffect(() => {
-  //   auth.onAuthStateChanged(async (user) => {
-  //     if (user) {
-  //       setUser(user);
-  //       history.push("/home");
-  //     }
-  //   });
-  // }, [userName]);
+  const setUser = (user) => {
+    dispatch(
+      setUserLoginDetails({
+        name: user.displayName,
+        email: user.email,
+        photo: user.photoURL,
+      })
+    );
+  };
 
-  // const handleAuth = () => {
-  //   if (!userName) {
-  //     auth
-  //       .signInWithPopup(provider)
-  //       .then((result) => {
-  //         setUser(result.user);
-  //       })
-  //       .catch((error) => {
-  //         alert(error.message);
-  //       });
-  //   } else if (userName) {
-  //     auth
-  //       .signOut()
-  //       .then(() => {
-  //         dispatch(setSignOutState());
-  //         history.push("/");
-  //       })
-  //       .catch((err) => alert(err.message));
-  //   }
-  // };
-
-  // const setUser = (user) => {
-  //   dispatch(
-  //     setUserLoginDetails({
-  //       name: user.displayName,
-  //       email: user.email,
-  //       photo: user.photoURL,
-  //     })
-  //   );
-  // };
-
-  let userName = false;
-
-  let userPhoto = '';
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        setUser(user);
+        history.push('/home');
+      }
+    });
+    // eslint-disable-next-line
+  }, [userName]);
 
   const handleAuth = async () => {
-    try {
-      const result = auth.signInWithPopup(provider);
-      console.log({ result });
-    } catch (error) {
-      alert(error.message);
+    if (!userName) {
+      try {
+        const result = auth.signInWithPopup(provider);
+        setUser(result.user);
+      } catch (error) {
+        alert(error.message);
+      }
+    } else if (userName) {
+      try {
+        auth.signOut();
+        dispatch(setSignOutState());
+        history.push('/');
+      } catch (error) {
+        alert(error.message);
+      }
     }
   };
 
