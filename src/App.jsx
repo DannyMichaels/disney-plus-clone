@@ -1,8 +1,14 @@
 import './App.css';
 import { AppRouter } from './router/AppRouter';
+import Header from './components/shared/Header';
 
 function App() {
-  return <AppRouter />;
+  return (
+    <div className="App">
+      <Header />
+      <AppRouter />
+    </div>
+  );
 }
 
 export default App;
