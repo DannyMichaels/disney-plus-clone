@@ -107,6 +107,7 @@ const NavMenu = styled.div`
       z-index: auto;
     }
 
+    // this is the element with the white underline hover
     span {
       color: rgb(249, 249, 249);
       font-size: 13px;
@@ -115,6 +116,7 @@ const NavMenu = styled.div`
       padding: 2px 0px;
       white-space: nowrap;
       position: relative;
+
       &:before {
         background-color: rgb(249, 249, 249);
         border-radius: 0px 0px 4px 4px;
@@ -125,25 +127,29 @@ const NavMenu = styled.div`
         opacity: 0;
         position: absolute;
         right: 0px;
+
+        /* transform origin tells it to go from left to center when hovering*/
         transform-origin: left center;
-        transform: scaleX(0);
+        transform: scaleX(0); // all the way left
         transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
-        visibility: hidden;
+        visibility: hidden; // it's actually there the whole time.
         width: auto;
       }
     }
+
     &:hover {
       span:before {
-        transform: scaleX(1);
+        //prettier-ignore
+        transform: scaleX(1); // this does the nice horizontal expanding when hovering
         visibility: visible;
         opacity: 1 !important;
       }
     }
   }
 
-  /* @media (max-width: 768px) {
+  @media (max-width: 768px) {
     display: none;
-  } */
+  }
 `;
 
 export default Header;
