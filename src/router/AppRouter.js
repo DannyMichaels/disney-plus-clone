@@ -6,5 +6,6 @@ import Home from '../pages/main/Home';
 export const AppRouter = () => (
   <Switch>
     <Route exact path="/" component={Login} />
+    <Route exact path="/home" component={Home} />
   </Switch>
 );

@@ -9,6 +9,6 @@ export const COLORS = {
 export const IMAGES = {
   WELCOME_BG: '/images/login-background.jpg',
   CTA_LOGO_ONE: '/images/cta-logo-one.svg',
-  CTA_LOGO_TWO: 'images/cta-logo-two.png',
+  CTA_LOGO_TWO: '/images/cta-logo-two.png',
   DISNEY_LOGO: '/images/logo.svg',
 };
